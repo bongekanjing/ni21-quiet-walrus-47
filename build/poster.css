@@ -1,0 +1,183 @@
+/* A newspaper front page fixed to a 1024x1024 square, drawn for the thumbnail.
+   One frame: every block shares the same left and right edge. The grid is the
+   only flexible row, so nothing can spill past the square, and the rule under
+   each briefing belongs to the row rather than the cell, so a wrapped headline
+   can never break the alignment between the two columns. */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1024px;
+  height: 1024px;
+  overflow: hidden;
+  background: #14161a;
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+}
+
+.page {
+  width: 1024px;
+  height: 1024px;
+  padding: 22px 32px 18px;
+  display: flex;
+  flex-direction: column;
+  color: #f6f3ea;
+}
+
+/* ---------- masthead ---------- */
+.top-rule { height: 5px; background: #f6f3ea; }
+.bot-rule { height: 1px; background: rgba(246, 243, 234, 0.45); }
+
+.masthead { text-align: center; }
+.masthead h1 {
+  font-size: 68px;
+  line-height: 1;
+  letter-spacing: 0.035em;
+  margin: 12px 0 9px;
+  font-weight: 700;
+}
+.dateline {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 25px;
+  letter-spacing: 0.10em;
+  color: #e9b95c;
+  font-weight: 700;
+}
+.strap {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.09em;
+  color: rgba(246, 243, 234, 0.55);
+  margin: 9px 0 12px;
+  text-transform: uppercase;
+}
+
+/* ---------- lead ---------- */
+.lead {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  column-gap: 26px;
+  padding: 15px 0 13px;
+  border-bottom: 1px solid rgba(246, 243, 234, 0.45);
+}
+.kicker {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #e9b95c;
+  margin-bottom: 6px;
+}
+.lead h2 {
+  font-size: 52px;
+  line-height: 1.0;
+  letter-spacing: -0.018em;
+  margin-bottom: 9px;
+}
+.dek {
+  font-size: 19px;
+  line-height: 1.27;
+  font-style: italic;
+  color: rgba(246, 243, 234, 0.95);
+  margin-bottom: 10px;
+  max-width: 700px;
+}
+.lead .body {
+  font-size: 15.5px;
+  line-height: 1.36;
+  color: rgba(246, 243, 234, 0.82);
+  columns: 2;
+  column-gap: 24px;
+}
+.lead-art {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.lead-art svg { width: 138px; height: auto; opacity: 0.9; }
+.lead-art figcaption {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(246, 243, 234, 0.5);
+  margin-top: 8px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ---------- briefs ---------- */
+.grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  column-gap: 40px;
+  padding-top: 4px;
+}
+
+.brief {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 0;
+  overflow: hidden;
+}
+.brief:nth-child(n+3) { border-top: 1px solid rgba(246, 243, 234, 0.22); }
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #e9b95c;
+  margin-bottom: 4px;
+}
+.ico { width: 15px; height: 15px; flex: none; }
+
+.brief h3 {
+  font-size: 31px;
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.brief p {
+  font-size: 16.5px;
+  line-height: 1.24;
+  color: rgba(246, 243, 234, 0.80);
+}
+
+/* ---------- footer ---------- */
+.ticker {
+  border-top: 1px solid rgba(246, 243, 234, 0.45);
+  padding-top: 9px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  align-items: baseline;
+}
+.ticker .label {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  color: #e9b95c;
+}
+.ticker .item {
+  font-size: 12.5px;
+  line-height: 1.3;
+  color: rgba(246, 243, 234, 0.74);
+}
+.ticker .item b {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #e9b95c;
+  margin-right: 3px;
+}

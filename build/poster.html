@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>The World in One Page — 21 November 2026</title>
+<style>/* A newspaper front page fixed to a 1024x1024 square, drawn for the thumbnail.
+   One frame: every block shares the same left and right edge. The grid is the
+   only flexible row, so nothing can spill past the square, and the rule under
+   each briefing belongs to the row rather than the cell, so a wrapped headline
+   can never break the alignment between the two columns. */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1024px;
+  height: 1024px;
+  overflow: hidden;
+  background: #14161a;
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+}
+
+.page {
+  width: 1024px;
+  height: 1024px;
+  padding: 22px 32px 18px;
+  display: flex;
+  flex-direction: column;
+  color: #f6f3ea;
+}
+
+/* ---------- masthead ---------- */
+.top-rule { height: 5px; background: #f6f3ea; }
+.bot-rule { height: 1px; background: rgba(246, 243, 234, 0.45); }
+
+.masthead { text-align: center; }
+.masthead h1 {
+  font-size: 68px;
+  line-height: 1;
+  letter-spacing: 0.035em;
+  margin: 12px 0 9px;
+  font-weight: 700;
+}
+.dateline {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 25px;
+  letter-spacing: 0.10em;
+  color: #e9b95c;
+  font-weight: 700;
+}
+.strap {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.09em;
+  color: rgba(246, 243, 234, 0.55);
+  margin: 9px 0 12px;
+  text-transform: uppercase;
+}
+
+/* ---------- lead ---------- */
+.lead {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  column-gap: 26px;
+  padding: 15px 0 13px;
+  border-bottom: 1px solid rgba(246, 243, 234, 0.45);
+}
+.kicker {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #e9b95c;
+  margin-bottom: 6px;
+}
+.lead h2 {
+  font-size: 52px;
+  line-height: 1.0;
+  letter-spacing: -0.018em;
+  margin-bottom: 9px;
+}
+.dek {
+  font-size: 19px;
+  line-height: 1.27;
+  font-style: italic;
+  color: rgba(246, 243, 234, 0.95);
+  margin-bottom: 10px;
+  max-width: 700px;
+}
+.lead .body {
+  font-size: 15.5px;
+  line-height: 1.36;
+  color: rgba(246, 243, 234, 0.82);
+  columns: 2;
+  column-gap: 24px;
+}
+.lead-art {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.lead-art svg { width: 138px; height: auto; opacity: 0.9; }
+.lead-art figcaption {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(246, 243, 234, 0.5);
+  margin-top: 8px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ---------- briefs ---------- */
+.grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  column-gap: 40px;
+  padding-top: 4px;
+}
+
+.brief {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 0;
+  overflow: hidden;
+}
+.brief:nth-child(n+3) { border-top: 1px solid rgba(246, 243, 234, 0.22); }
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #e9b95c;
+  margin-bottom: 4px;
+}
+.ico { width: 15px; height: 15px; flex: none; }
+
+.brief h3 {
+  font-size: 31px;
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.brief p {
+  font-size: 16.5px;
+  line-height: 1.24;
+  color: rgba(246, 243, 234, 0.80);
+}
+
+/* ---------- footer ---------- */
+.ticker {
+  border-top: 1px solid rgba(246, 243, 234, 0.45);
+  padding-top: 9px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  align-items: baseline;
+}
+.ticker .label {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  color: #e9b95c;
+}
+.ticker .item {
+  font-size: 12.5px;
+  line-height: 1.3;
+  color: rgba(246, 243, 234, 0.74);
+}
+.ticker .item b {
+  font-family: "Liberation Sans", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #e9b95c;
+  margin-right: 3px;
+}
+</style></head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="top-rule"></div>
+    <h1>THE WORLD IN ONE PAGE</h1>
+    <div class="dateline">SATURDAY 21 NOVEMBER 2026</div>
+    <div class="strap">9 stories · 9 beats · one Saturday, everywhere</div>
+    <div class="bot-rule"></div>
+  </header>
+
+  <section class="lead">
+    <div class="lead-text">
+      <div class="kicker">CLIMATE · ANTALYA</div>
+      <h2>COP31 blows past its deadline</h2>
+      <p class="dek">A third draft is on the table, objections are due by 03:00 GMT, and the plenary that could approve it is set for 06:00 GMT on Sunday.</p>
+      <p class="body">Negotiators sat through Saturday after a draft drew fire for never naming fossil fuels. President Murat Kurum says the new package answers that and the quarrel over adaptation finance. Australia leads the talks, Turkey hosts them, and the hall has yet to say yes.</p>
+    </div>
+    <figure class="lead-art">
+      <svg viewBox="0 0 160 160" fill="none" stroke="#f3efe2" stroke-width="3.4">
+        <circle cx="80" cy="80" r="66"/>
+        <path d="M14 80h132M80 14c22 21 22 111 0 132M80 14c-22 21-22 111 0 132"/>
+        <path d="M28 46c26 16 78 16 104 0M28 114c26-16 78-16 104 0"/>
+      </svg>
+      <figcaption>The hall in Antalya</figcaption>
+    </figure>
+  </section>
+
+  <section class="grid">
+      <article class="brief">
+        <div class="tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e9b95c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M3.5 12h17"/></svg><span>EUROPE</span></div>
+        <h3>Kyiv sets terms for talks</h3>
+        <p>Zelensky wants a written agenda before the next round</p>
+      </article>
+      <article class="brief">
+        <div class="tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e9b95c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17"/></svg><span>MIDDLE EAST</span></div>
+        <h3>Iran: Russia backs doctrine</h3>
+        <p>Araghchi says both oppose any change; inspectors barred</p>
+      </article>
+      <article class="brief">
+        <div class="tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e9b95c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l8.5 15.5h-17z"/><path d="M8 14h8"/></svg><span>SOUTH ASIA</span></div>
+        <h3>Tainted liquor kills 13</h3>
+        <p>300+ hospitalised in Manipur since 18 November</p>
+      </article>
+      <article class="brief">
+        <div class="tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e9b95c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="2"/><path d="M7.5 12h9"/></svg><span>NORTH AMERICA</span></div>
+        <h3>No treaty on killer robots</h3>
+        <p>Geneva talks end with a two-year study, not a mandate</p>
+      </article>
+      <article class="brief">
+        <div class="tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e9b95c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3.5 11.5L12 3l8.5 8.5"/></svg><span>EAST ASIA</span></div>
+        <h3>Snow cuts off a village</h3>
+        <p>Fallen trees isolate 1,400 people in Fukushima</p>
+      </article>
+      <article class="brief">
+        <div class="tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e9b95c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 15c3-7.5 6 3 8.5-2.5s5.5 3.5 8.5-3.5"/></svg><span>LATIN AMERICA</span></div>
+        <h3>One plan for El Niño urged</h3>
+        <p>World Bank flags La Plata floods, Dry Corridor drought</p>
+      </article>
+      <article class="brief">
+        <div class="tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e9b95c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19l6-8 4 4 6.5-9.5"/><path d="M15 5.5h5V11"/></svg><span>MARKETS</span></div>
+        <h3>Bitcoin stuck below $60k</h3>
+        <p>Seventh straight weekly fall as the AI rout spreads</p>
+      </article>
+      <article class="brief">
+        <div class="tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e9b95c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M6 7.5l12 9"/></svg><span>SPORT</span></div>
+        <h3>Rahul rewrites the record</h3>
+        <p>First Indian opener with a ton in each SENA country</p>
+      </article>
+  </section>
+
+  <footer class="ticker"><span class="label">21 NOVEMBER 2026</span> <span class="credit">Reporting: Reuters, AP, Kyodo, The Hindu, Yonhap</span></footer>
+</div>
+</body></html>
